@@ -1,0 +1,54 @@
+<head>
+	<title>multiplication table</title>
+	<style>
+	.col {
+		float: left;
+		display:inline-block;
+		padding:auto;
+		height:30px;
+		width:30px;
+		text-align: center;
+		vertical-align: middle;
+		line-height: 30px;
+	} 
+	.row { clear:both; }
+	.odd { background-color:#44f; color:white; }
+	.even { background-color:#77f; color:white; }
+	.square { color: #2f2; background-color: #333; }
+	.label { background-color:#ccc; color: black; font-weight: bold; }
+	</style>
+	<script>
+		window.onload = function () {
+			let count = 31;
+			let tableDiv = document.getElementById('main');
+			for(let y = 0; y < count; y++) {
+
+			let r = document.createElement('div');
+			r.className = 'row';
+
+			for(let x = 0; x < count; x++) {
+				let d = document.createElement('div');
+				let product = x * y;
+				let oddEven = product % 2 == 0 ? 'even' : 'odd';
+				if(x == y) {
+					d.classList.add('square');
+				}
+				d.classList.add(oddEven);
+				d.classList.add('col');
+				if(product == 0)  {
+					if(x == 0 && y == 0) {
+						//do nothing
+					} else {
+				 		d.innerText = (x + 1) * (y + 1) - 1;
+					}
+					d.classList.add('label');
+				} else {
+					d.innerText = product;
+				}
+				r.appendChild(d); 
+			}
+			tableDiv.appendChild(r);
+}
+		}
+	</script>
+	</head>
